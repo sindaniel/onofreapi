@@ -25,9 +25,17 @@ class UserController extends Controller
 
         $user = User::whereEmail($username)->first();
 
+        
+
         $data = ['user'=>false];
         if($user){
-            $data = ['user'=>true];
+
+            if(Hash::check($password, $user->password)){
+                $data = ['user'=>true];
+            }
+
+
+            
         }
 
 
